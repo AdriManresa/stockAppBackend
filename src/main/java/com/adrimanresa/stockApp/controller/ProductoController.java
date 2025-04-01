@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adrimanresa.stockApp.model.Producto;
-import com.adrimanresa.stockApp.repository.ProductoRepository;
 import com.adrimanresa.stockApp.service.ProductoService;
 
 @RestController
@@ -22,7 +21,7 @@ import com.adrimanresa.stockApp.service.ProductoService;
 @CrossOrigin(origins = "*") // para permitir peticiones desde React Native
 public class ProductoController {
 
- @Autowired
+    @Autowired
     private ProductoService productoService;
 
     @GetMapping
