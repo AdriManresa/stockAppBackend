@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.adrimanresa.stockApp.model.MovimientoStock;
 import com.adrimanresa.stockApp.model.Producto;
+import com.adrimanresa.stockApp.repository.MovimientoStockRepository;
 import com.adrimanresa.stockApp.service.ProductoService;
 
 @RestController
@@ -23,6 +25,9 @@ public class ProductoController {
 
     @Autowired
     private ProductoService productoService;
+
+    @Autowired
+    private MovimientoStockRepository movimientoRepo;
 
     @GetMapping
     public List<Producto> listar() {
@@ -47,6 +52,11 @@ public class ProductoController {
     @GetMapping("/{id}")
     public Producto obtenerPorId(@PathVariable Long id) {
         return productoService.obtenerPorId(id);
+    }
+
+    @GetMapping
+    public List<MovimientoStock> getAllMovimientos() {
+        return movimientoRepo.findAll();
     }
 
 }
