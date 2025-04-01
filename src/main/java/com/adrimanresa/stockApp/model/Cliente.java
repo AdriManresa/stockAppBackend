@@ -1,12 +1,15 @@
 package com.adrimanresa.stockApp.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data
+@Data // Genera getters, setters, toString, equals y hashCode
+@NoArgsConstructor // Constructor vacío
+@AllArgsConstructor // Constructor con todos los campos
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +19,5 @@ public class Cliente {
     private String nombre;
     @NotBlank(message = "El teléfono es obligatorio")
     private String telefono;
-    @Email(message = "El email no es válido")
-    private String email;
     private String direccion;
 }
