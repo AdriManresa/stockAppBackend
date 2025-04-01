@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PositiveOrZero;
 
 @Entity
 @Data // Genera getters, setters, toString, equals y hashCode
@@ -16,10 +17,14 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message = "El nombre del producto es obligatorio")
+
+    @NotBlank
     private String nombre;
-    @Min(value = 0, message = "El stock no puede ser negativo")
-    private int cantidad;
-    @NotBlank(message = "La categoría es obligatoria")
+
+    @PositiveOrZero
     private double precio;
+
+    // Stock actual → se puede recalcular o mantener actualizado
+    @Min(0)
+    private int stockActual;
 }
