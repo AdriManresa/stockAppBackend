@@ -1,8 +1,3 @@
-
-# Project Title
-
-A brief description of what this project does and who it's for
-
 # 🧾 Backend - Sistema de Control de Stock
 
 Este proyecto es la parte backend de una aplicación para gestionar productos y movimientos de stock. Está construido con **Java y Spring Boot**, y ofrece una API REST para ser consumida por una app móvil desarrollada en **React Native con Expo**.
