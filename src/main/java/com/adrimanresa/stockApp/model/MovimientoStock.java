@@ -1,9 +1,6 @@
 package com.adrimanresa.stockApp.model;
 
 import java.time.LocalDateTime;
-
-import org.springframework.stereotype.Service;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

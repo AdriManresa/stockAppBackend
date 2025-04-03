@@ -3,6 +3,7 @@ package com.adrimanresa.stockApp.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.adrimanresa.stockApp.model.MovimientoStock;
 import com.adrimanresa.stockApp.model.Producto;
 import com.adrimanresa.stockApp.repository.MovimientoStockRepository;
+import com.adrimanresa.stockApp.repository.ProductoRepository;
 import com.adrimanresa.stockApp.service.ProductoService;
 
 @RestController
@@ -29,11 +31,16 @@ public class ProductoController {
     @Autowired
     private MovimientoStockRepository movimientoRepo;
 
+    @Autowired
+    private ProductoRepository productoRepo;
+
+    // ✅ Este es el endpoint correcto para GET /api/productos
     @GetMapping
     public List<Producto> listar() {
         return productoService.listarProductos();
     }
 
+    // ✅ Usá solo uno de los dos POST (yo te dejo este)
     @PostMapping
     public Producto crear(@RequestBody Producto producto) {
         return productoService.crearProducto(producto);
@@ -54,9 +61,8 @@ public class ProductoController {
         return productoService.obtenerPorId(id);
     }
 
-    @GetMapping
+    @GetMapping("/con-movimientos")
     public List<MovimientoStock> getAllMovimientos() {
         return movimientoRepo.findAll();
     }
-
 }

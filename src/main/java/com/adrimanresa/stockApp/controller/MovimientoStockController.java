@@ -25,10 +25,9 @@ public class MovimientoStockController {
     @Autowired
     private MovimientoStockRepository movimientoRepo;
 
-    @Autowired
-    private
 
-    @PostMapping public ResponseEntity<String> registrarMovimiento(@RequestBody MovimientoStock movimiento) {
+    @PostMapping
+    public ResponseEntity<String> registrarMovimiento(@RequestBody MovimientoStock movimiento) {
         try {
             stockService.registrarMovimiento(movimiento);
             return ResponseEntity.ok("Movimiento registrado correctamente");
@@ -36,7 +35,6 @@ public class MovimientoStockController {
             return ResponseEntity.badRequest().body("Error: " + e.getMessage());
         }
     }
-
     @GetMapping("/producto/{id}")
     public List<MovimientoStock> getMovimientosPorProducto(@PathVariable Long id) {
         return movimientoRepo.findByProductoId(id);
